@@ -44,9 +44,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -L$$PWD/./ -llibzmq
+win32: LIBS += -L$$PWD/ZMQ/./ -llibzmq
 
-INCLUDEPATH += $$PWD/.
-DEPENDPATH += $$PWD/.
+INCLUDEPATH += $$PWD/ZMQ/.
+DEPENDPATH += $$PWD/ZMQ/.
 
-TRANSLATIONS += ZMQ_DEMO_zh_CN.ts
+TRANSLATIONS += /Translator/ZMQ_DEMO_zh_CN.ts

@@ -23,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent) :
     layout()->setSizeConstraint(QLayout::SetFixedSize);
 
     m_Messenger->moveToThread(m_ZmqThread);
-//    connect(m_ZmqThread, &QThread::finished, m_Messenger, SLOT(deleteLater()));
     connect(this, SIGNAL(signalSendRequest2Server(QString,QString,QString)), m_Messenger, SLOT(sendRequest2Server(QString,QString,QString)));
     connect(m_Messenger, SIGNAL(signalReceiveFrame(QByteArray)), this, SLOT(slotReceiveFrame(QByteArray)));
     connect(m_Messenger, SIGNAL(signalTimeOut(int)), this, SLOT(slotTimeOut(int)));
