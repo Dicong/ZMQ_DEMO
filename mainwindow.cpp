@@ -46,6 +46,40 @@ void MainWindow::setLabel()
     ui->settingLabel->setText(setting);
 }
 
+JSONPRS MainWindow::parseIntoJson(QString& str)
+{
+    QStringList allList = str.split('\n');
+    QJsonObject obj;
+    foreach (QString everyStr, allList)
+    {
+        QStringList everyList = everyStr.split(' ');
+        if (everyList.count() != 2)
+            return PRS_WRGFORMAT;
+        char flag = everyList.value(1).at(0).toLatin1();
+        switch(flag)
+        {
+        case 's':
+            obj.insert(everyList.at(0), everyList.value(1).remove(0, 1));
+            break;
+        case 'i':
+            obj.insert(everyList.at(0), everyList.value(1).remove(0, 1).toInt());
+            break;
+        case 'l':
+            obj.insert(everyList.at(0), everyList.value(1).remove(0, 1).toLongLong());
+            break;
+        case 'd':
+            obj.insert(everyList.at(0), everyList.value(1).remove(0, 1).toDouble());
+            break;
+        default:
+            return PRS_NOFLAG;
+        }
+    }
+    QJsonDocument doc;
+    doc.setObject(obj);
+    str = QVariant(doc.toJson()).toString();
+    return PRS_SUCCESS;
+}
+
 void MainWindow::onSendButtonClicked()
 {
     if (ui->sendButton->text() == tr("Send"))
@@ -91,7 +125,7 @@ void MainWindow::slotCloseWidget(QString host, int port, int timeout, bool flag)
 void MainWindow::sendFrame()
 {
     QString para1 = ui->firstEdit->toPlainText().trimmed();
-    QString para2 = ui->secondEdit->toPlainText().trimmed();
+    QString para2 = ui->secondEdit->toPlainText();
     QString para3 = ui->thirdEdit->toPlainText().trimmed();
 
     emit signalSendRequest2Server(para1, para2, para3);
@@ -154,4 +188,26 @@ void MainWindow::slotSendStoped()
 {
     ui->sendButton->setText(tr("Send"));
     ui->statusBar->showMessage(tr("Cancel success."));
+}
+
+void MainWindow::onParseButtonClicked()
+{
+    QString str = ui->secondEdit->toPlainText();
+    QString info = tr("Already in JSON format.");
+    if (str.startsWith('{'))
+    {
+        QMessageBox::warning(this, tr("Warning"), info, QMessageBox::NoButton);
+        return;
+    }
+    JSONPRS ret = parseIntoJson(str);
+    if (ret != PRS_SUCCESS)
+    {
+        if (ret == PRS_NOFLAG)
+            info = tr("Parameter requires format flag.");
+        else
+            info = tr("Wrong format.");
+        QMessageBox::warning(this, tr("Warning"), info, QMessageBox::NoButton);
+        return;
+    }
+    ui->secondEdit->setPlainText(str);
 }

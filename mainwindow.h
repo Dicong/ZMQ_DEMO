@@ -11,6 +11,13 @@ namespace Ui {
 class MainWindow;
 }
 
+enum JSONPRS
+{
+    PRS_SUCCESS,
+    PRS_WRGFORMAT,
+    PRS_NOFLAG,
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -25,6 +32,7 @@ signals:
 private slots:
     void onSendButtonClicked();
     void onSetting();
+    void onParseButtonClicked();
     void slotCloseWidget(QString host, int port, int timeout, bool flag);
     void slotReceiveFrame(QByteArray recv);
     void slotTimeOut(int times);
@@ -33,6 +41,7 @@ private slots:
 private:
     void setLabel();
     void sendFrame();
+    JSONPRS parseIntoJson(QString& str);
 
 private:
     Ui::MainWindow *ui;

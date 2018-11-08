@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>738</width>
-    <height>404</height>
+    <width>898</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,44 @@
        <string>Send Frame</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="settingLabel">
+         <property name="styleSheet">
+          <string notr="true">QLabel
+{
+	font-size:11px;
+	border:1px solid gray;
+	border-radius:3px;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QPlainTextEdit" name="secondEdit"/>
+       </item>
+       <item row="8" column="0">
+        <widget class="QPlainTextEdit" name="thirdEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>39</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPlainTextEdit" name="firstEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>39</height>
+          </size>
+         </property>
+        </widget>
+       </item>
        <item row="7" column="1" rowspan="2">
         <widget class="QPushButton" name="sendButton">
          <property name="minimumSize">
@@ -68,31 +106,6 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="settingLabel">
-         <property name="styleSheet">
-          <string notr="true">QLabel
-{
-	font-size:11px;
-	border:1px solid gray;
-	border-radius:3px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QPlainTextEdit" name="thirdEdit">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>39</height>
-          </size>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="QPushButton" name="setButton">
          <property name="maximumSize">
@@ -106,8 +119,12 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
-        <widget class="QPlainTextEdit" name="secondEdit"/>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Second Frame:</string>
+         </property>
+        </widget>
        </item>
        <item row="7" column="0">
         <widget class="QLabel" name="label_3">
@@ -123,20 +140,17 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Second Frame:</string>
+       <item row="6" column="1" alignment="Qt::AlignBottom">
+        <widget class="QPushButton" name="pushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QPlainTextEdit" name="firstEdit">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>39</height>
-          </size>
+         <property name="text">
+          <string>Parse into 
+JSON</string>
          </property>
         </widget>
        </item>
@@ -145,9 +159,15 @@
     </item>
     <item>
      <widget class="QGroupBox" name="outputBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="minimumSize">
        <size>
-        <width>0</width>
+        <width>500</width>
         <height>0</height>
        </size>
       </property>
@@ -200,8 +220,8 @@
    <slot>onSetting()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>314</x>
-     <y>65</y>
+     <x>372</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>737</x>
@@ -220,8 +240,24 @@
      <y>90</y>
     </hint>
     <hint type="destinationlabel">
-     <x>387</x>
-     <y>41</y>
+     <x>776</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onParseButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1126</x>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -229,5 +265,6 @@
  <slots>
   <slot>onSendButtonClicked()</slot>
   <slot>onSetting()</slot>
+  <slot>onParseButtonClicked()</slot>
  </slots>
 </ui>

@@ -49,4 +49,4 @@ win32: LIBS += -L$$PWD/ZMQ/./ -llibzmq
 INCLUDEPATH += $$PWD/ZMQ/.
 DEPENDPATH += $$PWD/ZMQ/.
 
-TRANSLATIONS += /Translator/ZMQ_DEMO_zh_CN.ts
+TRANSLATIONS += $$PWD/Translator/ZMQ_DEMO_zh_CN.ts
