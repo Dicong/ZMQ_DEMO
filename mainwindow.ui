@@ -6,103 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>898</width>
-    <height>437</height>
+    <width>1056</width>
+    <height>867</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Microsoft YaHei UI</family>
+   </font>
   </property>
   <property name="windowTitle">
    <string>ZMQ_DEMO</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QGroupBox" name="inputBox">
+     <widget class="QGroupBox" name="SendBox">
       <property name="minimumSize">
        <size>
-        <width>0</width>
-        <height>0</height>
+        <width>400</width>
+        <height>400</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>400</width>
-        <height>647</height>
+        <width>450</width>
+        <height>100000</height>
        </size>
       </property>
       <property name="title">
-       <string>Send Frame</string>
+       <string>Send Frame Box</string>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="settingLabel">
-         <property name="styleSheet">
-          <string notr="true">QLabel
-{
-	font-size:11px;
-	border:1px solid gray;
-	border-radius:3px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QPlainTextEdit" name="secondEdit"/>
-       </item>
-       <item row="8" column="0">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="7" column="0">
         <widget class="QPlainTextEdit" name="thirdEdit">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
            <height>39</height>
           </size>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QPlainTextEdit" name="firstEdit">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>39</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1" rowspan="2">
-        <widget class="QPushButton" name="sendButton">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>1000</width>
-           <height>1000</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Send</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" rowspan="2">
-        <widget class="QPushButton" name="viewButton">
-         <property name="maximumSize">
-          <size>
-           <width>1000</width>
-           <height>1000</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Receive Window</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -119,40 +64,138 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_2">
+       <item row="6" column="1" rowspan="2">
+        <widget class="QPushButton" name="sendButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>1000</width>
+           <height>1000</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Second Frame:</string>
+          <string>Send</string>
+         </property>
+         <property name="default">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_3">
+       <item row="4" column="0">
+        <widget class="QPlainTextEdit" name="secondEdit"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPlainTextEdit" name="firstEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>39</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" rowspan="2">
+        <widget class="QPushButton" name="viewButton">
+         <property name="maximumSize">
+          <size>
+           <width>1000</width>
+           <height>1000</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Receive Window</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Third Frame:</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Second Frame:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>First Frame:</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="1" alignment="Qt::AlignBottom">
-        <widget class="QPushButton" name="pushButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+       <item row="0" column="0">
+        <widget class="QLabel" name="settingLabel">
+         <property name="styleSheet">
+          <string notr="true">QLabel
+{
+	font-size:11px;
+	border:1px solid gray;
+	border-radius:3px;
+}</string>
          </property>
          <property name="text">
-          <string>Parse into 
-JSON</string>
+          <string/>
          </property>
         </widget>
+       </item>
+       <item row="3" column="1" rowspan="2">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item alignment="Qt::AlignTop">
+          <widget class="QPushButton" name="clearButton">
+           <property name="text">
+            <string>Clear All</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item alignment="Qt::AlignBottom">
+          <widget class="QPushButton" name="parseFromConsoleButton">
+           <property name="text">
+            <string>Parse from
+Console param</string>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignBottom">
+          <widget class="QPushButton" name="parse2JsonButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Parse into 
+JSON</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -168,17 +211,49 @@ JSON</string>
       <property name="minimumSize">
        <size>
         <width>500</width>
-        <height>0</height>
+        <height>800</height>
        </size>
       </property>
       <property name="title">
-       <string>Receive Frame</string>
+       <string>Receive Frame Box</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="2">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Text format
+ export</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>View in 
+separate window</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0" colspan="3">
         <widget class="QTextBrowser" name="recvBrowser">
          <property name="enabled">
           <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
         </widget>
        </item>
@@ -187,16 +262,70 @@ JSON</string>
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1056</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="actionSetting"/>
+   </widget>
+   <addaction name="menuOptions"/>
+  </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="settingAct">
    <property name="text">
     <string>Setting</string>
    </property>
   </action>
+  <action name="actionSetting">
+   <property name="text">
+    <string>Setting</string>
+   </property>
+  </action>
+  <action name="actionSubcribe">
+   <property name="text">
+    <string>Subcribe</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>firstEdit</tabstop>
+  <tabstop>secondEdit</tabstop>
+  <tabstop>thirdEdit</tabstop>
+  <tabstop>sendButton</tabstop>
+  <tabstop>clearButton</tabstop>
+  <tabstop>parse2JsonButton</tabstop>
+  <tabstop>setButton</tabstop>
+  <tabstop>viewButton</tabstop>
+  <tabstop>parseFromConsoleButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
+  <connection>
+   <sender>actionSetting</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onSetting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>527</x>
+     <y>369</y>
+    </hint>
+   </hints>
+  </connection>
   <connection>
    <sender>sendButton</sender>
    <signal>clicked()</signal>
@@ -204,28 +333,60 @@ JSON</string>
    <slot>onSendButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
-     <y>362</y>
+     <x>409</x>
+     <y>668</y>
     </hint>
     <hint type="destinationlabel">
-     <x>737</x>
-     <y>403</y>
+     <x>1148</x>
+     <y>642</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>setButton</sender>
+   <sender>parse2JsonButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>onSetting()</slot>
+   <slot>onParse2JsonButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>372</x>
-     <y>53</y>
+     <x>390</x>
+     <y>600</y>
     </hint>
     <hint type="destinationlabel">
-     <x>737</x>
-     <y>14</y>
+     <x>1093</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>parseFromConsoleButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onParseFromConsoleButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>548</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1082</x>
+     <y>547</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onClearButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1089</x>
+     <y>180</y>
     </hint>
    </hints>
   </connection>
@@ -236,28 +397,28 @@ JSON</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>332</x>
-     <y>90</y>
+     <x>401</x>
+     <y>118</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>50</y>
+     <x>537</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>setButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>onParseButtonClicked()</slot>
+   <slot>onSetting()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>308</y>
+     <x>383</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1126</x>
-     <y>288</y>
+     <x>1109</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -265,6 +426,8 @@ JSON</string>
  <slots>
   <slot>onSendButtonClicked()</slot>
   <slot>onSetting()</slot>
-  <slot>onParseButtonClicked()</slot>
+  <slot>onParse2JsonButtonClicked()</slot>
+  <slot>onClearButtonClicked()</slot>
+  <slot>onParseFromConsoleButtonClicked()</slot>
  </slots>
 </ui>

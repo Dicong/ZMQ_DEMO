@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QThread>
+#include <QStandardItemModel>
+#include <QQueue>
+#include <QDateTime>
 
 #include "settingwidget.h"
 #include "messenger.h"
@@ -16,6 +19,14 @@ enum JSONPRS
     PRS_SUCCESS,
     PRS_WRGFORMAT,
     PRS_NOFLAG,
+};
+
+struct SubRecv
+{
+    int         topic;
+    QDateTime   time;
+    int         size;
+    QByteArray  data;
 };
 
 class MainWindow : public QMainWindow
@@ -32,7 +43,9 @@ signals:
 private slots:
     void onSendButtonClicked();
     void onSetting();
-    void onParseButtonClicked();
+    void onParse2JsonButtonClicked();
+    void onParseFromConsoleButtonClicked();
+    void onClearButtonClicked();
     void slotCloseWidget(QString host, int port, int timeout, bool flag);
     void slotReceiveFrame(QByteArray recv);
     void slotTimeOut(int times);
@@ -41,13 +54,17 @@ private slots:
 private:
     void setLabel();
     void sendFrame();
+    void clearAll();
     JSONPRS parseIntoJson(QString& str);
+    bool parseFromConsole(QString str, QStringList& list);
 
 private:
     Ui::MainWindow *ui;
     SettingWidget*          m_SettingWidget;
     Messenger*              m_Messenger;
     QThread*                m_ZmqThread;
+    QStandardItemModel*     m_RecvModel;
+    QQueue<SubRecv>         m_RecvQueue;
 };
 
 #endif // MAINWINDOW_H

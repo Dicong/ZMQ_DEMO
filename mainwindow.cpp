@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     m_SettingWidget(NULL),
     m_Messenger(new Messenger),
-    m_ZmqThread(new QThread)
+    m_ZmqThread(new QThread),
+    m_RecvModel(new QStandardItemModel)
 {
     ui->setupUi(this);
     setLabel();
@@ -37,7 +38,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::setLabel()
 {
     QString setting = tr("Zmq Host: %1\n").arg(m_Messenger->getZmqHost());
@@ -49,6 +49,11 @@ void MainWindow::setLabel()
 JSONPRS MainWindow::parseIntoJson(QString& str)
 {
     QStringList allList = str.split('\n');
+    if (str.startsWith('{'))
+    {
+        str.remove('\\');
+        return PRS_SUCCESS;
+    }
     QJsonObject obj;
     foreach (QString everyStr, allList)
     {
@@ -78,6 +83,30 @@ JSONPRS MainWindow::parseIntoJson(QString& str)
     doc.setObject(obj);
     str = QVariant(doc.toJson()).toString();
     return PRS_SUCCESS;
+}
+
+bool MainWindow::parseFromConsole(QString str, QStringList& list)
+{
+    str.remove('\\');
+    if (str.startsWith("para: "))
+        str.remove(0, 6);
+    list = str.split(' ');
+    if (list.count() != 3)
+        return false;
+    for (int i=0; i<3; i++)
+    {
+        list[i].remove(0, 1);
+        list[i].remove(list[i].length()-1, 1);
+    }
+    return true;
+}
+
+void MainWindow::clearAll()
+{
+    ui->firstEdit->clear();
+    ui->secondEdit->clear();
+    ui->thirdEdit->clear();
+    ui->recvBrowser->clear();
 }
 
 void MainWindow::onSendButtonClicked()
@@ -190,15 +219,10 @@ void MainWindow::slotSendStoped()
     ui->statusBar->showMessage(tr("Cancel success."));
 }
 
-void MainWindow::onParseButtonClicked()
+void MainWindow::onParse2JsonButtonClicked()
 {
     QString str = ui->secondEdit->toPlainText();
     QString info = tr("Already in JSON format.");
-    if (str.startsWith('{'))
-    {
-        QMessageBox::warning(this, tr("Warning"), info, QMessageBox::NoButton);
-        return;
-    }
     JSONPRS ret = parseIntoJson(str);
     if (ret != PRS_SUCCESS)
     {
@@ -210,4 +234,21 @@ void MainWindow::onParseButtonClicked()
         return;
     }
     ui->secondEdit->setPlainText(str);
+}
+
+void MainWindow::onClearButtonClicked()
+{
+    clearAll();
+}
+
+void MainWindow::onParseFromConsoleButtonClicked()
+{
+    QStringList list;
+    QString str = ui->secondEdit->toPlainText();
+    if (parseFromConsole(str, list))
+    {
+        ui->firstEdit->setPlainText(list[0]);
+        ui->secondEdit->setPlainText(list[1]);
+        ui->thirdEdit->setPlainText(list[2]);
+    }
 }
