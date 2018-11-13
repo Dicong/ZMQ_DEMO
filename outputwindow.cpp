@@ -7,6 +7,7 @@ OutputWindow::OutputWindow(QWidget *parent) :
     ui(new Ui::OutputWindow)
 {
     ui->setupUi(this);
+    connect(ui->exportButton, SIGNAL(clicked()), this, SIGNAL(signalExportButtonClicked()));
 }
 
 OutputWindow::~OutputWindow()

@@ -34,4 +34,7 @@ export</string>
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <signal>signalExportButtonClicked()</signal>
+ </slots>
 </ui>

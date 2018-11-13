@@ -265,14 +265,14 @@ void MainWindow::onOutputWindowButtonToggled(bool flag)
 //        ui->viewButton->setChecked(false);
         connect(this, SIGNAL(signalOutputChanged(QString)), m_OutputWindow, SLOT(slotOutputChanged(QString)));
         connect(m_OutputWindow, SIGNAL(signalWindowClosed()), this, SLOT(slotOutputWindowClosed()));
-        connect(m_OutputWindow, SIGNAL(signalExportButtonClicked), this, SLOT(onExportButtonClicked));
+        connect(m_OutputWindow, SIGNAL(signalExportButtonClicked()), this, SLOT(onExportButtonClicked()));
         m_OutputWindow->show();
     }
     else
     {
         disconnect(this, SIGNAL(signalOutputChanged(QString)), m_OutputWindow, SLOT(slotOutputChanged(QString)));
         disconnect(m_OutputWindow, SIGNAL(signalWindowClosed()), this, SLOT(slotOutputWindowClosed()));
-        disconnect(m_OutputWindow, SIGNAL(signalExportButtonClicked), this, SLOT(onExportButtonClicked));
+        disconnect(m_OutputWindow, SIGNAL(signalExportButtonClicked()), this, SLOT(onExportButtonClicked()));
         m_OutputWindow->deleteLater();
         m_OutputWindow = NULL;
     }
