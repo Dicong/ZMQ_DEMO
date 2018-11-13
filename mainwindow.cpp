@@ -4,16 +4,19 @@
 #include <QMessageBox>
 #include <QJsonObject>
 #include <QThread>
+#include <QFileDialog>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "settingwidget.h"
 #include "messenger.h"
+#include "outputwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_SettingWidget(NULL),
+    m_OutputWindow(NULL),
     m_Messenger(new Messenger),
     m_ZmqThread(new QThread),
     m_RecvModel(new QStandardItemModel)
@@ -98,6 +101,7 @@ bool MainWindow::parseFromConsole(QString str, QStringList& list)
         list[i].remove(0, 1);
         list[i].remove(list[i].length()-1, 1);
     }
+    list[1] = toJsonFormat(list[1]);
     return true;
 }
 
@@ -106,14 +110,14 @@ void MainWindow::clearAll()
     ui->firstEdit->clear();
     ui->secondEdit->clear();
     ui->thirdEdit->clear();
-    ui->recvBrowser->clear();
+    emit signalOutputChanged("");
 }
 
 void MainWindow::onSendButtonClicked()
 {
     if (ui->sendButton->text() == tr("Send"))
     {
-        ui->recvBrowser->clear();
+        emit signalOutputChanged("");
         QString msg, result;
         sendFrame();
         ui->sendButton->setText(tr("Cancel"));
@@ -177,35 +181,41 @@ void MainWindow::slotReceiveFrame(QByteArray recv)
     }
     msg = doc.object().value("msg").toString();
 
-    //整理Json输出格式
-    result.replace('[', "\n[\n").replace('{', "{\n").replace(',', ",\n").replace('}', "\n}").replace(']', "\n]");
-    for (int pos=0; pos<result.length(); pos++)
-    {
-        if (result.at(pos) == '[' || result.at(pos) == '{')
-            tabCount++;
-        else if (result.at(pos) == ']' || result.at(pos) == '}')
-        {
-            tabCount--;
-            pos -= 4;
-            result.remove(pos, 4);
-        }
-        if (result.at(pos) == '\n')
-            for (int i=0; i<tabCount; i++)
-            {
-                result.insert(++pos, "    ");
-                pos += 3;
-            }
-    }
+    result = toJsonFormat(result);
 
 EndRecv:
     ui->sendButton->setText(tr("Send"));
-    ui->recvBrowser->setText(result);
     ui->statusBar->showMessage(msg);
-    if (!ui->outputBox->isVisible())
+    if (!ui->outputBox->isVisible() && m_OutputWindow == NULL)
     {
         ui->outputBox->setVisible(true);
         ui->viewButton->setChecked(true);
     }
+    emit signalOutputChanged(result);
+}
+
+QString MainWindow::toJsonFormat(QString str)
+{
+    int tabCount = 0;
+    str.replace('[', "\n[\n").replace('{', "{\n").replace(',', ",\n").replace('}', "\n}").replace(']', "\n]");
+    for (int pos=0; pos<str.length(); pos++)
+    {
+        if (str.at(pos) == '[' || str.at(pos) == '{')
+            tabCount++;
+        else if (str.at(pos) == ']' || str.at(pos) == '}')
+        {
+            tabCount--;
+            pos -= 4;
+            str.remove(pos, 4);
+        }
+        if (str.at(pos) == '\n')
+            for (int i=0; i<tabCount; i++)
+            {
+                str.insert(++pos, "    ");
+                pos += 3;
+            }
+    }
+    return str;
 }
 
 void MainWindow::slotTimeOut(int times)
@@ -217,6 +227,11 @@ void MainWindow::slotSendStoped()
 {
     ui->sendButton->setText(tr("Send"));
     ui->statusBar->showMessage(tr("Cancel success."));
+}
+
+void MainWindow::slotOutputWindowClosed()
+{
+    ui->outputWindowButton->setChecked(false);
 }
 
 void MainWindow::onParse2JsonButtonClicked()
@@ -241,6 +256,38 @@ void MainWindow::onClearButtonClicked()
     clearAll();
 }
 
+void MainWindow::onOutputWindowButtonToggled(bool flag)
+{
+    if (flag)
+    {
+        m_OutputWindow = new OutputWindow;
+        m_OutputWindow->slotOutputChanged(ui->recvBrowser->toPlainText());
+//        ui->viewButton->setChecked(false);
+        connect(this, SIGNAL(signalOutputChanged(QString)), m_OutputWindow, SLOT(slotOutputChanged(QString)));
+        connect(m_OutputWindow, SIGNAL(signalWindowClosed()), this, SLOT(slotOutputWindowClosed()));
+        connect(m_OutputWindow, SIGNAL(signalExportButtonClicked), this, SLOT(onExportButtonClicked));
+        m_OutputWindow->show();
+    }
+    else
+    {
+        disconnect(this, SIGNAL(signalOutputChanged(QString)), m_OutputWindow, SLOT(slotOutputChanged(QString)));
+        disconnect(m_OutputWindow, SIGNAL(signalWindowClosed()), this, SLOT(slotOutputWindowClosed()));
+        disconnect(m_OutputWindow, SIGNAL(signalExportButtonClicked), this, SLOT(onExportButtonClicked));
+        m_OutputWindow->deleteLater();
+        m_OutputWindow = NULL;
+    }
+}
+
+void MainWindow::onFormatAboutActionTriggered()
+{
+    QString parameterFormatAbout = "i\tInt\n"
+                                   "l\tLonglong\n"
+                                   "f\tFloat\n"
+                                   "d\tDouble\n"
+                                   "s\tString";
+    emit signalOutputChanged(parameterFormatAbout);
+}
+
 void MainWindow::onParseFromConsoleButtonClicked()
 {
     QStringList list;
@@ -251,4 +298,24 @@ void MainWindow::onParseFromConsoleButtonClicked()
         ui->secondEdit->setPlainText(list[1]);
         ui->thirdEdit->setPlainText(list[2]);
     }
+}
+
+void MainWindow::onExportButtonClicked()
+{
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Export As"), "./", tr("TXT(*.txt)"));
+    if (filePath == "")
+        return;
+    QFile file(filePath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QMessageBox::warning(NULL, tr("Warning: "), tr("Fail to open the file!"));
+        return;
+    }
+
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+    out << ui->recvBrowser->toPlainText();
+
+    file.close();
+    QMessageBox::information(NULL, tr("Info: "), tr("Export Successful!"));
 }

@@ -1,3 +1,5 @@
+#include <QPushButton>
+
 #include "settingwidget.h"
 #include "ui_settingwidget.h"
 
@@ -6,6 +8,8 @@ SettingWidget::SettingWidget(QWidget *parent) :
     ui(new Ui::SettingWidget)
 {
     ui->setupUi(this);
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("Ok"));
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
 }
 
 SettingWidget::~SettingWidget()

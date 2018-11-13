@@ -6,7 +6,7 @@
     <message>
         <location filename="../mainwindow.ui" line="19"/>
         <source>ZMQ_DEMO</source>
-        <translation type="unfinished">ZMQ试例</translation>
+        <translation>ZMQ试例</translation>
     </message>
     <message>
         <source>Send Frame</source>
@@ -14,165 +14,220 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="82"/>
-        <location filename="../mainwindow.cpp" line="114"/>
-        <location filename="../mainwindow.cpp" line="201"/>
-        <location filename="../mainwindow.cpp" line="218"/>
+        <location filename="../mainwindow.cpp" line="118"/>
+        <location filename="../mainwindow.cpp" line="187"/>
+        <location filename="../mainwindow.cpp" line="228"/>
         <source>Send</source>
-        <translation type="unfinished">发送</translation>
+        <translation>发送</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="121"/>
         <source>Third Frame:</source>
-        <translation type="unfinished">第三帧：</translation>
+        <translation>第三帧：</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="135"/>
         <source>First Frame:</source>
-        <translation type="unfinished">第一帧：</translation>
+        <translation>第一帧：</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="128"/>
         <source>Second Frame:</source>
-        <translation type="unfinished">第二帧：</translation>
+        <translation>第二帧：</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="41"/>
         <source>Send Frame Box</source>
-        <translation type="unfinished">发送窗口</translation>
+        <translation>发送窗口</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="63"/>
-        <location filename="../mainwindow.ui" line="285"/>
-        <location filename="../mainwindow.ui" line="290"/>
+        <location filename="../mainwindow.ui" line="295"/>
+        <location filename="../mainwindow.ui" line="300"/>
         <source>Setting</source>
-        <translation type="unfinished">设置</translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="111"/>
         <source>Receive Window</source>
-        <translation type="unfinished">接收窗口
+        <translation>接收窗口
 开/关</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="159"/>
+        <location filename="../mainwindow.ui" line="172"/>
         <source>Clear All</source>
-        <translation type="unfinished">清空</translation>
+        <translation>清空</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="179"/>
         <source>Parse from
 Console param</source>
-        <translation type="unfinished">解析
+        <translation>解析
 控制台</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="193"/>
         <source>Parse into 
 JSON</source>
-        <translation type="unfinished">解析为
+        <translation>解析为
 JSON</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="218"/>
         <source>Receive Frame Box</source>
-        <translation type="unfinished">接收窗口</translation>
+        <translation>接收窗口</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="224"/>
         <source>Text format
  export</source>
-        <translation type="unfinished">文本格式
+        <translation>文本格式
 导出</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="232"/>
         <source>View in 
 separate window</source>
-        <translation type="unfinished">单独窗口
+        <translation>单独窗口
 查看</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="276"/>
+        <location filename="../mainwindow.ui" line="279"/>
         <source>Options</source>
-        <translation type="unfinished">选项</translation>
+        <translation>选项</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="295"/>
+        <location filename="../mainwindow.ui" line="285"/>
+        <source>Help</source>
+        <translation>帮助</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="305"/>
         <source>Subcribe</source>
-        <translation type="unfinished">订阅</translation>
+        <translation>订阅</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="310"/>
+        <source>Parameter Format</source>
+        <translation>参数格式</translation>
     </message>
     <message>
         <source>Receive Frame</source>
         <translation type="obsolete">接收帧</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="43"/>
+        <location filename="../mainwindow.cpp" line="46"/>
         <source>Zmq Host: %1
 </source>
-        <translation type="unfinished">地址：%1
+        <translation>地址：%1
 </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="44"/>
+        <location filename="../mainwindow.cpp" line="47"/>
         <source>Zmq Port: %1
 </source>
-        <translation type="unfinished">端口：%1
+        <translation>端口：%1
 </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="45"/>
+        <location filename="../mainwindow.cpp" line="48"/>
         <source>Request Time Out: %1ms</source>
-        <translation type="unfinished">超时时间：%1毫秒</translation>
+        <translation>超时时间：%1毫秒</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="119"/>
+        <location filename="../mainwindow.cpp" line="123"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="141"/>
-        <source>Setting has been successful.</source>
-        <translation type="unfinished">设置成功</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="145"/>
+        <source>Setting has been successful.</source>
+        <translation>设置成功。</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="149"/>
         <source>Setting is canceled.</source>
-        <translation type="unfinished">设置被取消</translation>
+        <translation>设置被取消。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="175"/>
+        <location filename="../mainwindow.cpp" line="179"/>
         <source>parse json error occured.</source>
-        <translation type="unfinished">JSON解析错误</translation>
+        <translation>JSON解析错误。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="213"/>
+        <location filename="../mainwindow.cpp" line="223"/>
         <source>Connecting...It has timed out %1 times.</source>
-        <translation type="unfinished">连接中。。。已超时%1次</translation>
+        <translation>连接中。。。已超时%1次。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="229"/>
         <source>Cancel success.</source>
-        <translation type="unfinished">取消成功</translation>
+        <translation>取消成功。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="225"/>
+        <location filename="../mainwindow.cpp" line="240"/>
         <source>Already in JSON format.</source>
-        <translation type="unfinished">已经是JSON格式</translation>
+        <translation>已经是JSON格式。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="233"/>
+        <location filename="../mainwindow.cpp" line="248"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="305"/>
+        <source>Export As</source>
+        <translation>导出于</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="305"/>
+        <source>TXT(*.txt)</source>
+        <translation>文本文档(*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="311"/>
+        <source>Warning: </source>
+        <translation>警告：</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="311"/>
+        <source>Fail to open the file!</source>
+        <translation>打开文件失败！</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="320"/>
+        <source>Info: </source>
+        <translation>信息：</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="320"/>
+        <source>Export Successful!</source>
+        <translation>导出成功！</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="245"/>
         <source>Parameter requires format flag.</source>
-        <translation type="unfinished">参数需要格式标识</translation>
+        <translation>参数需要格式标识。</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="232"/>
+        <location filename="../mainwindow.cpp" line="247"/>
         <source>Wrong format.</source>
-        <translation type="unfinished">格式错误</translation>
+        <translation>格式错误。</translation>
+    </message>
+</context>
+<context>
+    <name>OutputWindow</name>
+    <message>
+        <location filename="../outputwindow.ui" line="19"/>
+        <source>Output Window</source>
+        <translation>输出窗口</translation>
+    </message>
+    <message>
+        <location filename="../outputwindow.ui" line="28"/>
+        <source>Text format
+export</source>
+        <translation type="unfinished">文本格式
+导出</translation>
     </message>
 </context>
 <context>
@@ -180,22 +235,32 @@ separate window</source>
     <message>
         <location filename="../settingwidget.ui" line="19"/>
         <source>Setting</source>
-        <translation type="unfinished">设置</translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../settingwidget.ui" line="25"/>
         <source>Zmq Host:</source>
-        <translation type="unfinished">地址：</translation>
+        <translation>地址：</translation>
     </message>
     <message>
-        <location filename="../settingwidget.ui" line="35"/>
+        <location filename="../settingwidget.ui" line="32"/>
         <source>Zmq Port:</source>
-        <translation type="unfinished">端口：</translation>
+        <translation>端口：</translation>
     </message>
     <message>
         <location filename="../settingwidget.ui" line="45"/>
         <source>Time out:</source>
-        <translation type="unfinished">超时：</translation>
+        <translation>超时：</translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="11"/>
+        <source>Ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="12"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
 </context>
 </TS>

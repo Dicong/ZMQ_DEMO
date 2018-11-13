@@ -28,16 +28,19 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     settingwidget.cpp \
-    messenger.cpp
+    messenger.cpp \
+    outputwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     settingwidget.h \
-    messenger.h
+    messenger.h \
+    outputwindow.h
 
 FORMS += \
         mainwindow.ui \
-    settingwidget.ui
+    settingwidget.ui \
+    outputwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -50,3 +53,5 @@ INCLUDEPATH += $$PWD/ZMQ/.
 DEPENDPATH += $$PWD/ZMQ/.
 
 TRANSLATIONS += $$PWD/Translator/ZMQ_DEMO_zh_CN.ts
+
+RC_ICONS = "ZeroMQ.ico"

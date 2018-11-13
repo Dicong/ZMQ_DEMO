@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1056</width>
-    <height>867</height>
+    <height>663</height>
    </rect>
   </property>
   <property name="font">
@@ -28,7 +28,7 @@
       <property name="minimumSize">
        <size>
         <width>400</width>
-        <height>400</height>
+        <height>600</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -151,15 +151,8 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="1" rowspan="2">
+       <item row="4" column="1">
         <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item alignment="Qt::AlignTop">
-          <widget class="QPushButton" name="clearButton">
-           <property name="text">
-            <string>Clear All</string>
-           </property>
-          </widget>
-         </item>
          <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
@@ -172,6 +165,13 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item alignment="Qt::AlignTop">
+          <widget class="QPushButton" name="clearButton">
+           <property name="text">
+            <string>Clear All</string>
+           </property>
+          </widget>
          </item>
          <item alignment="Qt::AlignBottom">
           <widget class="QPushButton" name="parseFromConsoleButton">
@@ -211,7 +211,7 @@ JSON</string>
       <property name="minimumSize">
        <size>
         <width>500</width>
-        <height>800</height>
+        <height>600</height>
        </size>
       </property>
       <property name="title">
@@ -219,7 +219,7 @@ JSON</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="2" column="2">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="exportButton">
          <property name="text">
           <string>Text format
  export</string>
@@ -227,10 +227,13 @@ JSON</string>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="outputWindowButton">
          <property name="text">
           <string>View in 
 separate window</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -277,7 +280,14 @@ separate window</string>
     </property>
     <addaction name="actionSetting"/>
    </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionFormatAbout"/>
+   </widget>
    <addaction name="menuOptions"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="settingAct">
@@ -293,6 +303,11 @@ separate window</string>
   <action name="actionSubcribe">
    <property name="text">
     <string>Subcribe</string>
+   </property>
+  </action>
+  <action name="actionFormatAbout">
+   <property name="text">
+    <string>Parameter Format</string>
    </property>
   </action>
  </widget>
@@ -333,11 +348,11 @@ separate window</string>
    <slot>onSendButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>668</y>
+     <x>448</x>
+     <y>621</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1148</x>
+     <x>1055</x>
      <y>642</y>
     </hint>
    </hints>
@@ -349,11 +364,11 @@ separate window</string>
    <slot>onParse2JsonButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>390</x>
-     <y>600</y>
+     <x>447</x>
+     <y>552</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1093</x>
+     <x>1055</x>
      <y>595</y>
     </hint>
    </hints>
@@ -365,11 +380,11 @@ separate window</string>
    <slot>onParseFromConsoleButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>404</x>
-     <y>548</y>
+     <x>447</x>
+     <y>504</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1082</x>
+     <x>1055</x>
      <y>547</y>
     </hint>
    </hints>
@@ -381,11 +396,11 @@ separate window</string>
    <slot>onClearButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>167</y>
+     <x>447</x>
+     <y>456</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1089</x>
+     <x>1055</x>
      <y>180</y>
     </hint>
    </hints>
@@ -417,17 +432,85 @@ separate window</string>
      <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1109</x>
+     <x>1055</x>
      <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MainWindow</sender>
+   <signal>signalOutputChanged(QString)</signal>
+   <receiver>recvBrowser</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>151</x>
+     <y>28</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>940</x>
+     <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>outputWindowButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onOutputWindowButtonToggled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>894</x>
+     <y>599</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1351</x>
+     <y>602</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFormatAbout</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onFormatAboutActionTriggered()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>527</x>
+     <y>331</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exportButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onExportButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1014</x>
+     <y>611</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1085</x>
+     <y>457</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
+  <signal>signalOutputChanged(QString)</signal>
   <slot>onSendButtonClicked()</slot>
   <slot>onSetting()</slot>
   <slot>onParse2JsonButtonClicked()</slot>
   <slot>onClearButtonClicked()</slot>
   <slot>onParseFromConsoleButtonClicked()</slot>
+  <slot>onOutputWindowButtonToggled(bool)</slot>
+  <slot>onFormatAboutActionTriggered()</slot>
+  <slot>onExportButtonClicked()</slot>
  </slots>
 </ui>
